@@ -9,7 +9,7 @@ public class Character extends Entity
     @Override
     public void Start()
     {
-
+        System.out.println("Character Name: " + GetName());
     }
 
     @Override
@@ -22,4 +22,15 @@ public class Character extends Entity
     private String name;
 
     // Methods
+}
+
+class Player extends Character
+{
+    Player()
+    {
+        // All players will have a "Player" name
+        super("Player");
+        // GameEngine.GetGameEngine().AddEntity(this);
+    }
+
 }
