@@ -9,7 +9,7 @@ public abstract class Entity
     public abstract void Update();
 
     // Attributes
-    private String name;
+    final protected String name;
 
     // Methods
     public String GetName()

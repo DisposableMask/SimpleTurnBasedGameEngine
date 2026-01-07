@@ -1,16 +1,23 @@
 public class SimsGame extends GameEngine
 {
-    // Optional to @Override but good practice
+    public SimsGame()
+    {
+        System.out.println("Sims Game Constructor!");
+        Character Player = new Character("Player");
+        AddEntity(Player);
+    }
+
+    // Optional to add @Override but good practice
     @Override
     protected void Start()
     {
-        System.out.println("Start!");
+        System.out.println("Sims Game Start!");
     }
 
     @Override
     protected void Update()
     {
-        System.out.println("Update!");
+        //System.out.println("Update!");
     }
 
     // public is redundant for main() method in Java 25
