@@ -1,3 +1,7 @@
+package Engine;
+
+import entities.Entity;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,8 +15,8 @@ public abstract class GameEngine
 
     private static GameEngine instance;
 
-    // Need to be staticc
-    public static GameEngine GetGameEngine()
+    // Need to be static
+    public static GameEngine GetInstance()
     {
         return instance;
     }

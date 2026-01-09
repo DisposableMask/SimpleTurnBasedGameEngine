@@ -1,17 +1,29 @@
 package actions;
 
-import java.lang.Character;
+import entities.Character;
 
 public abstract class BaseAction implements Action
 {
+    private String name;
+
+    BaseAction(final Character inCharacter)
+    {
+
+    }
+
     // Final to prevent child classes to override
     @Override
-    public final void Perform(String ActionName, Character character)
+    public final void Perform(final String actionName, final Character inCharacter)
     {
-        System.out.println("Currently performing " + ActionName + "...");
-        Execution(character);
+        System.out.println("Currently performing " + actionName + "...");
+        Execution(inCharacter);
     }
 
     // Child classes to implement its own functionality
-    protected abstract void Execution(Character character);
+    protected abstract void Execution(final Character inCharacter);
+
+    public String GetName()
+    {
+         return name;
+    }
 }

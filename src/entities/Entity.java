@@ -1,3 +1,5 @@
+package entities;
+
 // All objects in the game are known as entities
 public abstract class Entity
 {

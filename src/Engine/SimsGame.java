@@ -1,10 +1,17 @@
+package Engine;
+
+import entities.Player;
+import locations.HomeLocation;
+
 public class SimsGame extends GameEngine
 {
-    public SimsGame()
+    private final Player player;
+    private SimsGame()
     {
         System.out.println("Sims Game Constructor!");
-        Character Player = new Character("Player");
-        AddEntity(Player);
+
+        player = new Player();
+        AddEntity(player); // Add player to the entity list
     }
 
     // Optional to add @Override but good practice
@@ -12,6 +19,7 @@ public class SimsGame extends GameEngine
     protected void Start()
     {
         System.out.println("Sims Game Start!");
+        player.SetLocation(new HomeLocation());
     }
 
     @Override
