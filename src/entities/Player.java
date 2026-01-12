@@ -17,7 +17,7 @@ public class Player extends Character
     {
         super.SetLocation(newLocation);
 
-        System.out.println("-- START --");
+        System.out.println("-- Player::START --");
         System.out.println("Currently at " + GetCurrentLocation().GetName());
         System.out.println("Printing Location Options...");
         System.out.println("-- END --");

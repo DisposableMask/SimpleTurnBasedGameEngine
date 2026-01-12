@@ -3,31 +3,36 @@ package locations;
 // Java libs
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+import java.util.function.Supplier;
 
 // Custom libs
 import actions.Action;
 import entities.Character;
+import game.SimsGame;
 
 
 public abstract class Location
 {
-    final private String name;
+    final private LocationName name;
 
-    Location(final String locationName)
+    // List of all available actions at the location
+    private final List<Action> availableActions = new ArrayList<>();
+
+    // List of all connected locations to this location
+    private final List<Location> connectedLocations = new ArrayList<>();
+
+    Location(final LocationName locationName)
     {
         name = locationName;
+        // Store this new location object into the SimsGame static list of locations
+        UpdateLocationInstance(this);
     }
 
     public String GetName()
     {
-        return name;
+        return name.getName();
     }
-
-    // List of all available actions at the location
-    private List<Action> availableActions = new ArrayList<>();
-
-    // List of all connected locations to this location
-    private List<Location> connectedLocations = new ArrayList<>();
 
     //~ Begin Setters
     protected void SetLocationActions(List<Action> actionsToAdd)
@@ -76,6 +81,12 @@ public abstract class Location
         }
     }
 
+    private void UpdateLocationInstance(final Location location)
+    {
+        SimsGame instance = (SimsGame) SimsGame.GetInstance();
+        instance.AddLocationToPool(location);
+    }
+
     public void PerformActionOn(final Character inCharacter, final int actionIndex)
     {
         // Identify the action to perform
@@ -88,5 +99,14 @@ public abstract class Location
     public Location GetConnectedLocationFromIndex(int index)
     {
         return connectedLocations.get(index);
+    }
+
+    // Template/Generic function
+    protected <T extends Location> T CreateLocationByName(final LocationName locationName, Supplier<T> locationFactory)
+    {
+        SimsGame instance = (SimsGame) SimsGame.GetInstance();
+
+        // If location is found, case to the supplied type first, else return an empty of object of the supplied type
+        return instance.GetLocationFromPoolByName(locationName).map(location -> (T) location).orElseGet(locationFactory);
     }
 }

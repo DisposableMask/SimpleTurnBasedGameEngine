@@ -1,4 +1,4 @@
-package Engine;
+package game;
 
 import entities.Entity;
 
@@ -42,7 +42,7 @@ public abstract class GameEngine
     // Gemini suggests using a spawn queue to curb the potential crash
     private final List<Entity> spawnQueue = new ArrayList<>(0);
 
-    // Initialize the Engine to call the abstract functions
+    // Initialize the game to call the abstract functions
     protected void InitializeEngine()
     {
         // Safely add all elements of the spawn queue to the entity list

@@ -1,4 +1,4 @@
-package Engine;
+package game;
 
 import actions.Action;
 
